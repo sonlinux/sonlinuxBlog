@@ -2,7 +2,7 @@
 .. _about:
 
 About Alison Mukoma
-============================
+=====================
 
 .. image:: profile.jpg
 
