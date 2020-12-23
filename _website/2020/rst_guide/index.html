@@ -1,0 +1,680 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sphinx Tutorial &#8212; Tech Tok  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="author" title="About these documents" href="../../about/" />
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" /> 
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+ 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../blog/atom.xml"
+  title="Tech Tok Blog"
+/>
+ 
+<link href="True" rel="stylesheet" />
+
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+             <div class="section" id="sphinx-tutorial">
+<h1><a class="toc-backref" href="#id1">Sphinx Tutorial</a><a class="headerlink" href="#sphinx-tutorial" title="Permalink to this headline">¶</a></h1>
+<p>Quick start with squinx. This article gives highlights of the common basic ground to get set up with sphinx.</p>
+<div class="contents topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#sphinx-tutorial" id="id1">Sphinx Tutorial</a></p>
+<ul>
+<li><p><a class="reference internal" href="#step-1" id="id2">Step 1</a></p>
+<ul>
+<li><p><a class="reference internal" href="#getting-set-up" id="id3">Getting Set Up</a></p></li>
+<li><p><a class="reference internal" href="#philosophy" id="id4">Philosophy</a></p></li>
+<li><p><a class="reference internal" href="#installing-sphinx" id="id5">Installing Sphinx</a></p></li>
+<li><p><a class="reference internal" href="#getting-started" id="id6">Getting Started</a></p></li>
+<li><p><a class="reference internal" href="#building-docs" id="id7">Building docs</a></p></li>
+<li><p><a class="reference internal" href="#documenting-a-project" id="id8">Documenting a Project</a></p></li>
+<li><p><a class="reference internal" href="#support-docs" id="id9">Support docs</a></p>
+<ul>
+<li><p><a class="reference internal" href="#hyperlink-syntax" id="id10">Hyperlink Syntax</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#installation-docs" id="id11">Installation docs</a></p></li>
+<li><p><a class="reference internal" href="#code-example-syntax" id="id12">Code Example Syntax</a></p></li>
+<li><p><a class="reference internal" href="#table-of-contents-tree-toctree" id="id13">Table of Contents Tree (toctree)</a></p></li>
+<li><p><a class="reference internal" href="#build-docs-again" id="id14">Build Docs Again</a></p></li>
+<li><p><a class="reference internal" href="#aside-other-formats" id="id15">Aside: Other formats</a></p></li>
+<li><p><a class="reference internal" href="#make-a-manpage" id="id16">Make a manpage</a></p></li>
+<li><p><a class="reference internal" href="#create-a-single-page-document" id="id17">Create a single page document</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#step-2" id="id18">Step 2</a></p>
+<ul>
+<li><p><a class="reference internal" href="#referencing-code" id="id19">Referencing Code</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="step-1">
+<h2><a class="toc-backref" href="#id2">Step 1</a><a class="headerlink" href="#step-1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="getting-set-up">
+<h3><a class="toc-backref" href="#id3">Getting Set Up</a><a class="headerlink" href="#getting-set-up" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="philosophy">
+<h3><a class="toc-backref" href="#id4">Philosophy</a><a class="headerlink" href="#philosophy" title="Permalink to this headline">¶</a></h3>
+<p><a href="#id20"><span class="problematic" id="id21">`Sphinx`_</span></a> is what is called a documentation generator.
+This means that it takes a bunch of source files in plain text,
+and generates a bunch of other awesome things, mainly HTML.
+For our use case you can think of it as a program that takes in plain text
+files in <a href="#id22"><span class="problematic" id="id23">`reStructuredText`_</span></a> format, and outputs HTML.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reST</span> <span class="o">-&gt;</span> <span class="n">Sphinx</span> <span class="o">-&gt;</span> <span class="n">HTML</span>
+</pre></div>
+</div>
+<p>So as a user of Sphinx, your main job will be writing these text files.
+This means that you should be minimally familiar with <a href="#id24"><span class="problematic" id="id25">`reStructuredText`_</span></a> as
+a language.
+It’s similar to Markdown in a lot of ways,
+if you are already familiar with Markdown.</p>
+</div>
+<div class="section" id="installing-sphinx">
+<h3><a class="toc-backref" href="#id5">Installing Sphinx</a><a class="headerlink" href="#installing-sphinx" title="Permalink to this headline">¶</a></h3>
+<p>The first step is installing <a href="#id26"><span class="problematic" id="id27">`Sphinx`_</span></a>.
+Sphinx is a python project,
+so it can be installed like any other python library.
+Every Operating System should have Python pre-installed,
+so you should just have to run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">easy_install</span> <span class="n">Sphinx</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Advanced users can install this in a virtualenv if they wish.
+Also, <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">Sphinx</span></code> works fine if you have Pip.</p>
+</div>
+</div>
+<div class="section" id="getting-started">
+<h3><a class="toc-backref" href="#id6">Getting Started</a><a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h3>
+<p>Now you are ready to creating documentation.
+Create a directory called <code class="docutils literal notranslate"><span class="pre">crawler</span></code>.
+Inside that directory you should create a <code class="docutils literal notranslate"><span class="pre">docs</span></code> directory,
+and move into it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">crawler</span>
+<span class="n">cd</span> <span class="n">crawler</span>
+<span class="n">mkdir</span> <span class="n">docs</span>
+<span class="n">cd</span> <span class="n">docs</span>
+</pre></div>
+</div>
+<p>Then you can create the Sphinx project skeleton in this directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sphinx</span><span class="o">-</span><span class="n">quickstart</span>
+</pre></div>
+</div>
+<p>accepting all the defaults, calling the project <code class="docutils literal notranslate"><span class="pre">Crawler</span></code>, and giving it a <cite>1.0</cite> version.
+Your file system should now look similar to this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">crawler</span><span class="o">/</span>
+    <span class="n">docs</span><span class="o">/</span>
+        <span class="n">conf</span><span class="o">.</span><span class="n">py</span>
+        <span class="n">index</span><span class="o">.</span><span class="n">rst</span>
+        <span class="n">Makefile</span>
+</pre></div>
+</div>
+<p>We have a top-level <code class="docutils literal notranslate"><span class="pre">docs</span></code> directory in the main project directory.
+Inside of this is:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">index.rst</span></code>:</dt><dd><p>This is the index file for the documentation, or what lives at <code class="docutils literal notranslate"><span class="pre">/</span></code>.
+It normally contains a <em>Table of Contents</em> that will link to all other
+pages of the documentation.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">conf.py</span></code>: which allows for customization of Sphinx.</dt><dd><p>You won’t need to use this too much yet,
+but it’s good to be familiar with this file.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Makefile</span></code>: This ships with Sphinx,</dt><dd><p>and is the main interface for local development,
+and shouldn’t be changed.</p>
+</dd>
+</dl>
+<p><code class="docutils literal notranslate"><span class="pre">_build</span></code>:  The directory that your output files go into.</p>
+<p><code class="docutils literal notranslate"><span class="pre">_static</span></code>: The directory to include all your static files, like images.</p>
+<p><code class="docutils literal notranslate"><span class="pre">_templates</span></code>: Allows you to override Sphinx templates to customze look and feel.</p>
+</div>
+<div class="section" id="building-docs">
+<h3><a class="toc-backref" href="#id7">Building docs</a><a class="headerlink" href="#building-docs" title="Permalink to this headline">¶</a></h3>
+<p>Let’s build our docs into HTML to see how it works.
+Simply run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inside top-level docs/ directory.</span>
+<span class="n">make</span> <span class="n">html</span>
+</pre></div>
+</div>
+<p>This should run Sphinx in your shell, and output HTML.
+At the end, it should say something about the documents being ready in
+<code class="docutils literal notranslate"><span class="pre">_build/html</span></code>.
+You can now open them in your browser by typing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span> <span class="n">_build</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+</pre></div>
+</div>
+<p>This should display a rendered HTML page that says <strong>Welcome to Crawler’s documentation!</strong> at the top.</p>
+<p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> is the main way you will build HTML documentation locally.
+It is simply a wrapper around a more complex call to Sphinx.</p>
+</div>
+<div class="section" id="documenting-a-project">
+<h3><a class="toc-backref" href="#id8">Documenting a Project</a><a class="headerlink" href="#documenting-a-project" title="Permalink to this headline">¶</a></h3>
+<p>Now that we have our basic skeleton,
+let’s document the project.
+As you might have guessed from the name,
+we’ll be documenting a basic web crawler.</p>
+<p>For this project,
+we’ll have the following pages:</p>
+<ul class="simple">
+<li><p>Index Page</p></li>
+<li><p>Support</p></li>
+<li><p>Installation</p></li>
+<li><p>Cookbook/Examples</p></li>
+<li><p>Command Line Options</p></li>
+<li><p>Changelog</p></li>
+</ul>
+<p>Let’s start with the Support page.</p>
+</div>
+<div class="section" id="support-docs">
+<h3><a class="toc-backref" href="#id9">Support docs</a><a class="headerlink" href="#support-docs" title="Permalink to this headline">¶</a></h3>
+<p>It’s always important that users can ask questions when they get stuck.
+There are many ways to handle this,
+but normal approaches are to have an IRC channel and mailing list.</p>
+<p>Go ahead and put this markup in your <code class="docutils literal notranslate"><span class="pre">support.rst</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>=======
+Support
+=======
+
+The easiest way to get help with the project is to join the ``#crawler``
+channel on Freenode_. We hang out there and you can get real-time help with
+your projects.  The other good way is to open an issue on Github_.
+
+The mailing list at https://groups.google.com/forum/#!forum/crawler is also available for support.
+
+.. _Freenode: irc://freenode.net
+.. _Github: http://github.com/example/crawler/issues
+</pre></div>
+</div>
+<div class="section" id="hyperlink-syntax">
+<span id="index-0"></span><h4><a class="toc-backref" href="#id10">Hyperlink Syntax</a><a class="headerlink" href="#hyperlink-syntax" title="Permalink to this headline">¶</a></h4>
+<p>The main new markup here is the link syntax.
+The link text is set by putting a <code class="docutils literal notranslate"><span class="pre">_</span></code> after some text.
+The <code class="docutils literal notranslate"><span class="pre">`</span></code> is used to group text,
+allowing you to include multiple words in your link text.
+You should use the <code class="docutils literal notranslate"><span class="pre">`</span></code>,
+even when the link text is only one word.
+This keeps the syntax consistent.</p>
+<p>The link target is defined at the bottom of the section with <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">_&lt;link</span> <span class="pre">text&gt;:</span> <span class="pre">&lt;target&gt;</span></code>.</p>
+</div>
+</div>
+<div class="section" id="installation-docs">
+<h3><a class="toc-backref" href="#id11">Installation docs</a><a class="headerlink" href="#installation-docs" title="Permalink to this headline">¶</a></h3>
+<p>Installation documentation is really important.
+Anyone who is coming to the project will need to install it.
+For our example,
+we are installing a basic Python script,
+so it will be pretty easy.</p>
+<p>Include the following in your <code class="docutils literal notranslate"><span class="pre">install.rst</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">============</span>
+<span class="n">Installation</span>
+<span class="o">============</span>
+
+<span class="n">At</span> <span class="n">the</span> <span class="n">command</span> <span class="n">line</span><span class="p">::</span>
+
+    <span class="n">easy_install</span> <span class="n">crawler</span>
+
+<span class="n">Or</span><span class="p">,</span> <span class="k">if</span> <span class="n">you</span> <span class="n">have</span> <span class="n">virtualenvwrapper</span> <span class="n">installed</span><span class="p">:</span>
+
+<span class="o">..</span> <span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span> <span class="n">bash</span>
+
+    <span class="n">mkvirtualenv</span> <span class="n">crawler</span>
+    <span class="n">pip</span> <span class="n">install</span> <span class="n">crawler</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="code-example-syntax">
+<span id="index-1"></span><h3><a class="toc-backref" href="#id12">Code Example Syntax</a><a class="headerlink" href="#code-example-syntax" title="Permalink to this headline">¶</a></h3>
+<p>This snippet introduces a couple of simple concepts.
+The syntax for displaying code is <code class="docutils literal notranslate"><span class="pre">::</span></code>.
+When it is used at the end of a sentence,
+Sphinx is smart and displays one <code class="docutils literal notranslate"><span class="pre">:</span></code> in the output,
+and knows there is a code example in the following indented block.</p>
+<p>Sphinx,
+like Python,
+uses meaningful whitespace.
+Blocks of content are structured based on the indention level they are on.
+You can see this concept with our <code class="docutils literal notranslate"><span class="pre">code-block</span></code> directive above.</p>
+</div>
+<div class="section" id="table-of-contents-tree-toctree">
+<span id="index-2"></span><h3><a class="toc-backref" href="#id13">Table of Contents Tree (toctree)</a><a class="headerlink" href="#table-of-contents-tree-toctree" title="Permalink to this headline">¶</a></h3>
+<p>Now would be a good time to introduce the <code class="docutils literal notranslate"><span class="pre">toctree</span></code>.
+One of the main concepts in Sphinx is that it allows multiple pages to be combined into a cohesive hierarchy.
+The <code class="docutils literal notranslate"><span class="pre">toctree</span></code> directive is a fundamental part of this structure.
+A simple <code class="docutils literal notranslate"><span class="pre">toctree</span></code> directive looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">toctree</span><span class="p">::</span>
+   <span class="p">:</span><span class="n">maxdepth</span><span class="p">:</span> <span class="mi">2</span>
+
+   <span class="n">install</span>
+   <span class="n">support</span>
+</pre></div>
+</div>
+<p>This will then output a Table of Contents in the page where this occurs.
+It will output the top-level headers of the pages as listed.
+This also tells Sphinx that the other pages are sub-pages of the current page.</p>
+<p>You should go ahead and include the above <code class="docutils literal notranslate"><span class="pre">toctree</span></code> directive in your <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> file.</p>
+</div>
+<div class="section" id="build-docs-again">
+<h3><a class="toc-backref" href="#id14">Build Docs Again</a><a class="headerlink" href="#build-docs-again" title="Permalink to this headline">¶</a></h3>
+<p>Now that you have a few pages of content,
+go ahead and build your docs again:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">html</span>
+</pre></div>
+</div>
+<p>If you open up your <code class="docutils literal notranslate"><span class="pre">index.html</span></code>,
+you should see the basic structure of your docs from the included <code class="docutils literal notranslate"><span class="pre">toctree</span></code> directive.</p>
+</div>
+<div class="section" id="aside-other-formats">
+<h3><a class="toc-backref" href="#id15">Aside: Other formats</a><a class="headerlink" href="#aside-other-formats" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="make-a-manpage">
+<h3><a class="toc-backref" href="#id16">Make a manpage</a><a class="headerlink" href="#make-a-manpage" title="Permalink to this headline">¶</a></h3>
+<p>The beauty of Sphinx is that it can output in multiple formats,
+not just HTML.
+All of those formats share the same base format though,
+so you only have to change things in one place.
+So you can generate a manpage for your docs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">man</span>
+</pre></div>
+</div>
+<p>This will place a manpage in <code class="docutils literal notranslate"><span class="pre">_build/man</span></code>.
+You can then view it with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">man</span> <span class="n">_build</span><span class="o">/</span><span class="n">man</span><span class="o">/</span><span class="n">crawler</span><span class="o">.</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-a-single-page-document">
+<h3><a class="toc-backref" href="#id17">Create a single page document</a><a class="headerlink" href="#create-a-single-page-document" title="Permalink to this headline">¶</a></h3>
+<p>Some people prefer one large HTML document,
+instead of having to look through multiple pages.
+This is another area where Sphinx shines.
+You can write your documentation in multiple files to make editing and updating easier.
+Then if you want to distribute a single page HTML version:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">singlehtml</span>
+</pre></div>
+</div>
+<p>This will combine all of your HTML pages into a single page.
+Check it out by opening it in your browser:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span> <span class="n">_build</span><span class="o">/</span><span class="n">singlehtml</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+</pre></div>
+</div>
+<p>You’ll notice that it included the documents in the order that your <span class="target" id="index-3"></span>TOC Tree was defined.</p>
+</div>
+</div>
+<div class="section" id="step-2">
+<h2><a class="toc-backref" href="#id18">Step 2</a><a class="headerlink" href="#step-2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="referencing-code">
+<h3><a class="toc-backref" href="#id19">Referencing Code</a><a class="headerlink" href="#referencing-code" title="Permalink to this headline">¶</a></h3>
+<p>Let’s go ahead and add a cookbook to our documentation.
+Users will often come to your project to solve the same problems.
+Including a Cookbook or Examples section will be a great resource for this content.</p>
+<p>In your <code class="docutils literal notranslate"><span class="pre">cookbook.rst</span></code>,
+add the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>========
+Cookbook
+========
+
+Crawl a web page
+----------------
+
+The most simple way to use our program is with no arguments.
+Simply run::
+
+        crawler &lt;url&gt;
+
+to crawl a webpage.
+
+Crawl a page slowly
+-------------------
+
+To add a delay to your crawler,
+use :option:`-d`::
+
+        crawler -d 10 &lt;url&gt;
+
+This will wait 10 seconds between page fetches.
+
+Crawl only your blog
+--------------------
+
+You will want to use the :option:`-i` flag,
+which while ignore URLs matching the passed regex::
+
+        crawler -i &quot;^blog/&quot; &lt;url&gt;
+
+This will only crawl pages that contain your blog URL.
+
+
+        Only crawl certain pages
+        ------------------------
+
+        You will want to use the :option:`-i` flag,
+        which while ignore URLs matching the passed regex::
+
+                crawler -i &quot;pdf$&quot; &lt;url&gt;
+
+        This will ignore URLs that end in PDF.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="section">
+     
+<div class="section">
+  <span style="float: left">
+     
+    <a href="../data_science_basic/">
+      <i class="fa fa-arrow-circle-left"></i> Data Science Basic
+    </a>
+    
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right">
+     
+    <a href="../../first-post/">
+      Welcome to my Blog <i
+        class="fa fa-arrow-circle-right"
+      ></i
+      >
+    </a>
+    
+  </span>
+</div>
+  
+  <div class="section">
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_shortname = "sonlinux-github-io";
+      var disqus_identifier = "/2020/rst_guide/";
+      var disqus_title = "Sphinx Tutorial";
+      var disqus_url = "2020/rst_guide";
+
+      (function () {
+        var dsq = document.createElement("script");
+        dsq.type = "text/javascript";
+        dsq.async = true;
+        dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+        (
+          document.getElementsByTagName("head")[0] ||
+          document.getElementsByTagName("body")[0]
+        ).appendChild(dsq);
+      })();
+    </script>
+    <noscript
+      >Please enable JavaScript to view the
+      <a href="https://disqus.com/?ref_noscript"
+        >comments powered by Disqus.</a
+      ></noscript
+    >
+    <a href="https://disqus.com" class="dsq-brlink"
+      >comments powered by <span class="logo-disqus">Disqus</span></a
+    >
+  </div>
+  
+</div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../../">
+    <img class="logo" src="../../_static/logo.png" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=sonlinux&repo=sonlinuxBlog&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+  
+<h2>
+   <i class="fa fa-calendar"></i>
+  Aug 02, 2020 
+</h2>
+
+<ul>
+      
+<li id="category">
+  <span
+    ><i class="fa-fw fa fa-folder-open"></i></span
+  >
+   
+  <a href="../../blog/category/computerscience/">ComputerScience</a>  
+</li>
+ 
+<li id="tags">
+  <span
+    ><i
+      class="fa-fw fa fa-tag"
+    ></i
+    ></span
+  >
+   
+  <a href="../../blog/tag/documentation/">documentation</a>  
+</li>
+ 
+<li id="comments">
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = "sonlinux-github-io"; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+      var s = document.createElement("script");
+      s.async = true;
+      s.type = "text/javascript";
+      s.src = "//" + disqus_shortname + ".disqus.com/count.js";
+      (
+        document.getElementsByTagName("HEAD")[0] ||
+        document.getElementsByTagName("BODY")[0]
+      ).appendChild(s);
+    })();
+  </script>
+  <i class="fa-fw fa fa-comments"></i>
+  <a
+    href="#disqus_thread"
+    data-disqus-identifier="/2020/rst_guide/"
+  >
+    </a
+  >
+</li>
+
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../about/">About Alison Mukoma</a></li>
+</ul>
+
+
+<h3>
+  <a href="../../blog/">Recent Posts</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../first-post/"
+      >23 December - Welcome to my Blog</a
+    >
+  </li>
+  
+  <li>
+    <a href="../data_science_basic/"
+      >02 August - Data Science Basic</a
+    >
+  </li>
+  
+</ul>
+
+<h3><a href="../../blog/tag/">Tags</a></h3>
+<style type="text/css">
+  ul.ablog-cloud {
+    list-style: none;
+    overflow: auto;
+  }
+  ul.ablog-cloud li {
+    float: left;
+    height: 20pt;
+    line-height: 18pt;
+    margin-right: 5px;
+  }
+  ul.ablog-cloud a {
+    text-decoration: none;
+    vertical-align: middle;
+  }
+  li.ablog-cloud-1 {
+    font-size: 80%;
+  }
+  li.ablog-cloud-2 {
+    font-size: 95%;
+  }
+  li.ablog-cloud-3 {
+    font-size: 110%;
+  }
+  li.ablog-cloud-4 {
+    font-size: 125%;
+  }
+  li.ablog-cloud-5 {
+    font-size: 140%;
+  }
+</style>
+<ul class="ablog-cloud">
+   
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../blog/tag/atag/">atag</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../blog/tag/data/">data</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../blog/tag/documentation/">documentation</a>
+  </li>
+   
+</ul>
+
+<h3>
+  <a href="../../blog/category/">Categories</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../blog/category/computerscience/">ComputerScience (2)</a>
+  </li>
+   
+</ul>
+
+<h3>
+  <a href="../../blog/archive/">Archives</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../blog/2020/">2020 (3)</a>
+  </li>
+   
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Alison Mukoma.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/2020/rst_guide.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

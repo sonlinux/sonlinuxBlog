@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>sonlinux.github.io</id>
+  <title>Tech Tok Blog</title>
+  <updated>2020-12-23T04:03:26.900236+00:00</updated>
+  <link href="sonlinux.github.io"/>
+  <link href="sonlinux.github.io/blog/atom.xml"/>
+  <generator uri="https://ablog.readthedocs.org" version="0.10.12">ABlog</generator>
+  <entry>
+    <id>sonlinux.github.io/2020/data_science_basic/</id>
+    <title>Data Science Basic</title>
+    <updated>2020-08-02T00:00:00+02:00</updated>
+    <link href="sonlinux.github.io/2020/data_science_basic/" rel="alternate"/>
+    <published>2020-08-02T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>sonlinux.github.io/2020/rst_guide/</id>
+    <title>Sphinx Tutorial</title>
+    <updated>2020-08-02T00:00:00+02:00</updated>
+    <link href="sonlinux.github.io/2020/rst_guide/" rel="alternate"/>
+    <published>2020-08-02T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>sonlinux.github.io/first-post/</id>
+    <title>Welcome to my Blog</title>
+    <updated>2020-12-23T00:00:00+01:00</updated>
+    <author>
+      <name>Alison Mukoma</name>
+    </author>
+    <link href="sonlinux.github.io/first-post/" rel="alternate"/>
+    <published>2020-12-23T00:00:00+01:00</published>
+  </entry>
+</feed>
