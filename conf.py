@@ -24,7 +24,7 @@ blog_title = u'Tech Tok Blog'
 
 # Base URL for the website, required for generating feeds.
 # e.g. blog_baseurl = "http://example.com/"
-blog_baseurl = u'sonlinux.github.io'
+blog_baseurl = "sonlinux.github.io/"
 
 # Choose to archive only post titles. Archiving only titles can speed
 # up project building.
@@ -149,7 +149,7 @@ fontawesome_link_cdn = True
 
 # You can enable Disqus_ by setting ``disqus_shortname`` variable.
 # Disqus_ short name for the blog.
-disqus_shortname = 'sonlinux-github-io'
+disqus_shortname = "sonlinux-pages"
 
 # Choose to disqus pages that are not posts, default is ``False``.
 # disqus_pages = False
@@ -256,12 +256,27 @@ html_theme = 'alabaster'
 # further.  For a list of options available for each theme, see the
 # documentation.
 html_theme_options = {
-    'github_button': True,
+    'codecov_button': True,
+    'fixed_sidebar': True,
+    'description': "Tek Toks",
     'github_user': 'sonlinux',
     'github_repo': 'sonlinuxBlog',
-    'logo':'logo.png',
-    # 'analytics_id':'UA-97414429-1',
+    'github_banner': True,
+    'travis_button': True,
+    'logo': 'logo.png',
+    'logo_name': 'Alison Mukoma',
+    'analytics_id': 'G-9SB958RDBT',
+    'badge_branch': 'master',
+    'codecov_button': True,
+    'donate_url': 'https://ablog.readthedocs.io/',
+    'show_relbars': True,
+    'show_powered_by': False,
+    'show_related': True,
+    'sidebar_collapse': True,
 }
+
+todo_include_todos = True
+
 # Add any paths that contain custom themes here, relative to this directory.
 html_theme_path = [alabaster.get_path()]
 # html_theme_path = [sphinx_bernard_theme.get_html_theme_path()]

@@ -6,7 +6,11 @@
 Welcome to Alison Mukoma's Blog!
 ====================================
 
-Hello World! Find more about me here: :ref:`about`
+.. code-block::
+
+   f'Hello World!'
+   
+Find more about me here: :ref:`about`
 
 
 Here is a list of most recent posts:
@@ -26,4 +30,3 @@ Here is a list of most recent posts:
    :hidden:
 
    about.rst
-
